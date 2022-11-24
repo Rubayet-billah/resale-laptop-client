@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 
     const menu = <>
-        <li><Link>Home</Link></li>
-        <li><Link>Shop</Link></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/shop'>Shop</Link></li>
+        <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/register'>Register</Link></li>
     </>
     return (
         <div>
@@ -19,7 +21,7 @@ const Header = () => {
                             {menu}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Reseller</a>
+                    <Link className="btn btn-ghost normal-case text-xl">Reseller</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -27,7 +29,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+
                 </div>
             </div>
         </div>
