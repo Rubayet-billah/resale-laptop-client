@@ -1,21 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import Product from '../Product/Product';
 
 const Shop = () => {
+    const products = useLoaderData();
 
-    const { data } = useQuery({
-        queryKey: ['products'],
-        queryFn: async ({ params }) => {
-            const res = await fetch(`http://localhost:5000/products/${params.id}`);
-            const data = await res.json();
-            return data;
-        }
-    })
-
-    console.log(data);
     return (
         <div>
-
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                {
+                    products?.map(product => <Product
+                        key={product._id}
+                        product={product}
+                    ></Product>)
+                }
+            </div>
         </div>
     );
 };
