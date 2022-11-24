@@ -5,8 +5,8 @@ const Shop = () => {
 
     const { data } = useQuery({
         queryKey: ['products'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/products');
+        queryFn: async ({ params }) => {
+            const res = await fetch(`http://localhost:5000/products/${params.id}`);
             const data = await res.json();
             return data;
         }
