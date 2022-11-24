@@ -2,7 +2,7 @@ import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import Login from "../../pages/Register/Login/Login";
 import Register from "../../pages/Register/Register/Register";
-import SHop from "../../pages/Shopping/Shop/SHop";
+import Shop from "../../pages/Shopping/Shop/Shop";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: MainLayout } = require("../../Layout/MainLayout/MainLayout");
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/shop',
-                element: <SHop></SHop>
+                element: <Shop></Shop>
             },
             {
                 path: '/login',

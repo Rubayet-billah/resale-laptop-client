@@ -1,27 +1,23 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
-const SHop = () => {
+const Shop = () => {
 
-    const product = [
-        {
-            name: 'MSI GF63',
-            image: '',
-            categoryId: 1,
-            resalePrice: 460,
-            originalPrice: 880,
-            location: 'Dhaka',
-            usingTime: '6 months',
-            date: '',
-            seller: 'Jubayer',
-
+    const { data } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/products');
+            const data = await res.json();
+            return data;
         }
-    ]
+    })
 
+    console.log(data);
     return (
         <div>
-            shop
+
         </div>
     );
 };
 
-export default SHop;
+export default Shop;
