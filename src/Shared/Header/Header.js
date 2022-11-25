@@ -2,12 +2,11 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useRole from '../../Hooks/useRole/useRole';
+import Spinner from '../Spinner/Spinner';
 
 const Header = () => {
     const { user, logoutUser } = useContext(AuthContext);
     const [role, roleLoader] = useRole(user?.email);
-
-    console.group(role);
 
     // console.log(user)
 
@@ -21,7 +20,7 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         {
             user?.uid ? <>
-                {role === 'Customer' && <li><Link>My Orders</Link></li>}
+                {role === 'Customer' && <li><Link to={`/mybookings/${user?.email}`}>My Bookings</Link></li>}
                 {role === 'Seller' && <li><Link>My Products</Link></li>}
                 {role === 'Admin' && <li><Link to='/dashboard'>Dashboard</Link></li>}
             </> : <>
@@ -29,6 +28,9 @@ const Header = () => {
                 <li><Link to='/register'>Register</Link></li></>
         }
     </>
+    if (roleLoader) {
+        return <Spinner></Spinner>
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
