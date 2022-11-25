@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useRole from '../../Hooks/useRole/useRole';
 
 const Header = () => {
     const { user, logoutUser } = useContext(AuthContext);
+    const [role, roleLoader] = useRole(user?.email);
 
-    console.log(user)
+    console.group(role);
+
+    // console.log(user)
 
     const handleLogout = () => {
         logoutUser()
@@ -17,8 +21,9 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         {
             user?.uid ? <>
-
-                <li><Link to='/dashboard'>Dashboard</Link></li>
+                {role === 'Customer' && <li><Link>My Orders</Link></li>}
+                {role === 'Seller' && <li><Link>My Products</Link></li>}
+                {role === 'Admin' && <li><Link to='/dashboard'>Dashboard</Link></li>}
             </> : <>
                 <li><Link to='/login'>Login</Link></li>
                 <li><Link to='/register'>Register</Link></li></>
