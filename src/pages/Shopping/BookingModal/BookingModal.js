@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
-const BookingModal = ({ bookedProduct }) => {
+const BookingModal = ({ bookedProduct, setBookedProduct }) => {
     const { image, name, resalePrice, originalPrice, usingTime, location, seller, description, condition } = bookedProduct;
     const { user } = useContext(AuthContext);
 
@@ -17,7 +18,19 @@ const BookingModal = ({ bookedProduct }) => {
             phone,
             meetingLocation,
         }
-        console.log(booking)
+        // store booking on database
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('Product Booked Successfully')
+                setBookedProduct(null)
+            })
     }
     return (
         <div>
