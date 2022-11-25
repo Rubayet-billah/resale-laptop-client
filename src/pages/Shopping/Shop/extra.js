@@ -12,6 +12,7 @@ const Extra = () => {
             originalPrice: 880,
             location: 'Dhaka',
             usingTime: '6 months',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora beatae atque sint numquam odio ad quo magnam mollitia possimus ea. Soluta, ducimus. Asperiores laborum veritatis itaque. Nesciunt amet explicabo ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate eligendi, facere laborum ratione dolorem cumque, distinctio alias consequatur consequuntur numquam perferendis magni recusandae quasi maiores officia voluptatem laboriosam possimus? ',
             date: '12 Nov 2022',
             seller: 'Jubayer',
 
@@ -25,6 +26,7 @@ const Extra = () => {
             originalPrice: 880,
             location: 'Dhaka',
             usingTime: '6 months',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora beatae atque sint numquam odio ad quo magnam mollitia possimus ea. Soluta, ducimus. Asperiores laborum veritatis itaque. Nesciunt amet explicabo ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate eligendi, facere laborum ratione dolorem cumque, distinctio alias consequatur consequuntur numquam perferendis magni recusandae quasi maiores officia voluptatem laboriosam possimus? ',
             date: '12 Nov 2022',
             seller: 'Jubayer',
 
@@ -38,6 +40,7 @@ const Extra = () => {
             originalPrice: 880,
             location: 'Dhaka',
             usingTime: '6 months',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora beatae atque sint numquam odio ad quo magnam mollitia possimus ea. Soluta, ducimus. Asperiores laborum veritatis itaque. Nesciunt amet explicabo ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate eligendi, facere laborum ratione dolorem cumque, distinctio alias consequatur consequuntur numquam perferendis magni recusandae quasi maiores officia voluptatem laboriosam possimus? ',
             date: '12 Nov 2022',
             seller: 'Jubayer',
 
@@ -51,6 +54,7 @@ const Extra = () => {
             originalPrice: 880,
             location: 'Dhaka',
             usingTime: '6 months',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora beatae atque sint numquam odio ad quo magnam mollitia possimus ea. Soluta, ducimus. Asperiores laborum veritatis itaque. Nesciunt amet explicabo ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate eligendi, facere laborum ratione dolorem cumque, distinctio alias consequatur consequuntur numquam perferendis magni recusandae quasi maiores officia voluptatem laboriosam possimus? ',
             date: '12 Nov 2022',
             seller: 'Jubayer',
 
@@ -64,6 +68,7 @@ const Extra = () => {
             originalPrice: 880,
             location: 'Dhaka',
             usingTime: '6 months',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora beatae atque sint numquam odio ad quo magnam mollitia possimus ea. Soluta, ducimus. Asperiores laborum veritatis itaque. Nesciunt amet explicabo ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate eligendi, facere laborum ratione dolorem cumque, distinctio alias consequatur consequuntur numquam perferendis magni recusandae quasi maiores officia voluptatem laboriosam possimus? ',
             date: '12 Nov 2022',
             seller: 'Jubayer',
 
@@ -77,6 +82,7 @@ const Extra = () => {
             originalPrice: 880,
             location: 'Dhaka',
             usingTime: '6 months',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora beatae atque sint numquam odio ad quo magnam mollitia possimus ea. Soluta, ducimus. Asperiores laborum veritatis itaque. Nesciunt amet explicabo ab. Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate eligendi, facere laborum ratione dolorem cumque, distinctio alias consequatur consequuntur numquam perferendis magni recusandae quasi maiores officia voluptatem laboriosam possimus? ',
             date: '12 Nov 2022',
             seller: 'Jubayer',
 
