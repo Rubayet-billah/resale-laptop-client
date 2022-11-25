@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import { FaGooglePlusSquare } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, googleLogin } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const handleLogin = (data) => {
@@ -14,7 +15,14 @@ const Login = () => {
                 console.log(user)
             })
             .catch(err => console.error(err))
+    }
 
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(res => {
+                const user = res.user;
+                console.log(user)
+            }).catch(err => console.error(err))
     }
     return (
         <div>
@@ -38,6 +46,11 @@ const Login = () => {
                             {errors.password && <span className='text-red-500 text-sm italic'>Password is required</span>}
                             <input className='btn btn-primary my-3' type="submit" />
                         </form>
+                        <hr />
+                        <div className='text-center mb-3'>
+                            <small className=''>other login options</small>
+                            <p onClick={handleGoogleLogin}><FaGooglePlusSquare className='h-8 w-8 text-green-500 mx-auto mt-1' /></p>
+                        </div>
                     </div>
                 </div>
             </div>

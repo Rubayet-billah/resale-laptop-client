@@ -17,7 +17,7 @@ const Product = ({ product, setBookedProduct }) => {
                     <p>Location: {location}</p>
                 </div>
                 <p>{description.length > 100 ? <>{
-                    toggle ? <>{description.slice(0, 100)}... <span className='text-primary' onClick={() => setToggle(!toggle)}> see more
+                    toggle ? <>{description.slice(0, 100)}... <span className='text-primary' onClick={() => setToggle(!toggle)}> see details
                     </span></> : <>{description}</>
                 }</> : <>{description}</>}</p>
 
