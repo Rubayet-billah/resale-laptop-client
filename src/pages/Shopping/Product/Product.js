@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Product = ({ product }) => {
+const Product = ({ product, setBookedProduct }) => {
     const [toggle, setToggle] = useState(true)
     const { image, name, resalePrice, originalPrice, usingTime, location, seller, description, condition } = product;
     return (
@@ -26,7 +26,10 @@ const Product = ({ product }) => {
 
 
                 <div className="card-actions justify-end">
-                    <button className='btn w-full btn-primary'>Book Now</button>
+                    {/* <button className='btn w-full btn-primary'>Book Now</button> */}
+                    <label htmlFor="booking-modal"
+                        onClick={() => setBookedProduct(product)}
+                        className='btn w-full btn-primary'>Book Now</label>
                 </div>
             </div>
         </div>
