@@ -20,7 +20,7 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         {
             user?.uid ? <>
-                {role === 'Customer' && <li><Link to={`/mybookings/${user?.email}`}>My Bookings</Link></li>}
+                {role === 'Customer' && <li><Link to='/mybookings'>My Bookings</Link></li>}
                 {role === 'Seller' && <li><Link>My Products</Link></li>}
                 {role === 'Admin' && <li><Link to='/dashboard'>Dashboard</Link></li>}
             </> : <>

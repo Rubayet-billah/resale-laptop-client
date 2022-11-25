@@ -27,9 +27,8 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             {
-                path: '/mybookings/:email',
-                element: <MyBookings></MyBookings>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.email}`)
+                path: '/mybookings',
+                element: <MyBookings></MyBookings>
             },
             {
                 path: '/login',

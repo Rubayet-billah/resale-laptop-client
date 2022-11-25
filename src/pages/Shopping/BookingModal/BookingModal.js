@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
@@ -12,9 +13,12 @@ const BookingModal = ({ bookedProduct, setBookedProduct }) => {
         const phone = form.phone.value;
         const meetingLocation = form.meetingLocation.value;
         const booking = {
+            bookingDate: format(new Date(), 'PP'),
             buyer: user.displayName,
             email: user.email,
             productName: name,
+            image,
+            price: resalePrice,
             phone,
             meetingLocation,
         }
