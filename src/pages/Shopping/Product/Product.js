@@ -12,7 +12,7 @@ const Product = ({ product, setBookedProduct }) => {
                     <p className='text-xl'>Resale Price: <span className='text-primary font-bold'>${resalePrice}</span></p>
                     <p className='text-xl'>Original Price: <span className='text-primary font-bold'>${originalPrice}</span></p>
                     <p>Condition: {condition}</p>
-                    <p>Used: {usingTime}</p>
+                    <p>Used: since {usingTime}</p>
                     <p>Seller: {seller}</p>
                     <p>Location: {location}</p>
                 </div>
