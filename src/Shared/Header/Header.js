@@ -39,9 +39,9 @@ const Header = () => {
                 <li><Link to='/register'>Register</Link></li></>
         }
     </>
-    if (roleLoader) {
-        return <Spinner></Spinner>
-    }
+    // if (roleLoader) {
+    //     return
+    // }
     return (
         <div>
             <div className="navbar bg-base-100">
