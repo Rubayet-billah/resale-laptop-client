@@ -12,7 +12,6 @@ const AdvertisedProducts = () => {
         }
     })
 
-    console.log(advertisedProducts);
     return (
         <div>
             <h2 className='text-4xl text-center my-6'>Advertised Product</h2>

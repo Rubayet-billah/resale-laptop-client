@@ -11,7 +11,6 @@ const MyProducts = () => {
     useEffect(() => {
         axios.get(`http://localhost:5000/myproducts/?email=${user?.email}`)
             .then(data => {
-                console.log(data.data)
                 setMyproducts(data.data)
             })
     }, [user?.email, call])

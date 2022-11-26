@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import { GoVerified } from 'react-icons/go'
+import useVerify from '../../../Hooks/useVerify/useVerify';
 
 const Product = ({ product, setBookedProduct }) => {
     const [toggle, setToggle] = useState(true)
-    const { image, name, resalePrice, originalPrice, usingTime, location, seller, description, condition } = product;
+    const { image, name, resalePrice, originalPrice, usingTime, location, seller, email, description, condition } = product;
+
+    const [verified, verifiedLoader] = useVerify(email);
+    console.log(verified)
+    if (verifiedLoader) {
+        return
+    }
     return (
         <div className="card  bg-base-100 shadow-xl">
             <figure><img src={image} alt="Shoes" /></figure>
@@ -13,7 +21,7 @@ const Product = ({ product, setBookedProduct }) => {
                     <p className='text-xl'>Original Price: <span className='text-primary font-bold'>${originalPrice}</span></p>
                     <p>Condition: {condition}</p>
                     <p>Used: since {usingTime}</p>
-                    <p>Seller: {seller}</p>
+                    <p> <span className='flex items-center'>Seller: {seller} {verified && <GoVerified className='text-info ml-1' />}</span></p>
                     <p>Location: {location}</p>
                 </div>
                 <p>{description.length > 100 ? <>{

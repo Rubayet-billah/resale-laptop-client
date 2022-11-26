@@ -31,7 +31,6 @@ const BookingModal = ({ bookedProduct, setBookedProduct }) => {
             body: JSON.stringify(booking)
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
                 toast.success('Product Booked Successfully')
                 setBookedProduct(null)
             })

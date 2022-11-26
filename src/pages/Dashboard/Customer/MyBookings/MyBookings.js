@@ -21,7 +21,6 @@ const MyBookings = () => {
             return data;
         }
     })
-    console.log(myBookings)
 
     return (
         <div>
