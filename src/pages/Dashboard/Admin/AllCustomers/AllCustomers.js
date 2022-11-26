@@ -13,7 +13,7 @@ const AllCustomers = () => {
     console.log(customers)
     return (
         <div>
-
+            <div className="text-8xl">Customers {customers?.length}</div>
         </div>
     );
 };

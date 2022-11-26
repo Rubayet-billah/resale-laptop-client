@@ -1,4 +1,6 @@
 import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
+import AllCustomers from "../../pages/Dashboard/Admin/AllCustomers/AllCustomers";
+import AllSellers from "../../pages/Dashboard/Admin/AllSellers/AllSellers";
 import MyBookings from "../../pages/Dashboard/Customer/MyBookings/MyBookings";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import AddProduct from "../../pages/Dashboard/Seller/AddProduct/AddProduct";
@@ -41,6 +43,7 @@ const router = createBrowserRouter([
                 path: '/myproducts',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
+
             {
                 path: '/login',
                 element: <Login></Login>
@@ -59,7 +62,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Dashboard></Dashboard>
-            }
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AllSellers></AllSellers>
+            },
+            {
+                path: '/dashboard/allcustomers',
+                element: <AllCustomers></AllCustomers>
+            },
         ]
     }
 ])
