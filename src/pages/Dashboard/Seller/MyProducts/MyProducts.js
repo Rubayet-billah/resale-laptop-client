@@ -9,7 +9,7 @@ const MyProducts = () => {
     const [call, setCall] = useState(false)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/products/?email=${user?.email}`)
+        axios.get(`http://localhost:5000/myproducts/?email=${user?.email}`)
             .then(data => {
                 console.log(data.data)
                 setMyproducts(data.data)
