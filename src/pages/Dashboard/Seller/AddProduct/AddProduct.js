@@ -25,7 +25,8 @@ const AddProduct = () => {
             condition,
             description,
             date,
-            seller: user?.displayName
+            seller: user?.displayName,
+            email: user?.email
         }
 
         fetch('http://localhost:5000/products', {

@@ -22,7 +22,7 @@ const Header = () => {
             user?.uid ? <>
                 {role === 'Customer' && <li><Link to='/myorders'>My Orders</Link></li>}
                 {role === 'Seller' && <>
-                    <li><Link>My Products</Link></li>
+                    <li><Link to='/myproducts'>My Products</Link></li>
                     <li><Link to='/addproduct'>Add A Product</Link></li>
                     <li><Link>My Buyers</Link></li>
                 </>}
