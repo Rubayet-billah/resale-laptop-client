@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
@@ -16,6 +15,23 @@ const MyProducts = () => {
                 setMyproducts(data.data)
             })
     }, [user?.email, call])
+
+    // handle advertise product
+    const handleAdvertise = (product) => {
+        fetch(`http://localhost:5000/products/${product._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ advertised: true })
+        }).then(res => res.json())
+            .then(result => {
+                if (result.modifiedCount) {
+                    toast.success(`${product.name} Advertised Successfully`);
+                    setCall(!call)
+                }
+            })
+    }
 
     // handle delete product
     const handleDelete = (id) => {
@@ -55,19 +71,19 @@ const MyProducts = () => {
                                     </div>
                                 </div></th>
                                 <td>{product.name}</td>
-                                <td>{product.status}</td>
+                                <td>{!product.status ? <span className='text-success'>Available</span> : <span className='text-warning'>Sold</span>}</td>
                                 <td>
                                     {
-                                        product.resalePrice && !product.status &&
-                                        <button className='btn btn-sm btn-outline'>
-                                            Avdvertise
-                                        </button>
+                                        !product.advertised ?
+                                            <button onClick={() => handleAdvertise(product)} className='btn btn-sm btn-outline'>
+                                                Avdvertise
+                                            </button> : <span className='font-bold text-success'>Advertised</span>
                                     }
                                     {
                                         // booking.price && booking.paid && <span className='text-success'>Paid</span>
                                     }
                                 </td>
-                                <td className='font-bol text-primary'>${product.resalePrice}</td>
+                                <td className='font-bold text-primary'>${product.resalePrice}</td>
                                 <td><button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-outline btn-error'>Delete</button></td>
                             </tr>)
                         }
