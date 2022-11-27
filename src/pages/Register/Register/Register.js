@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import getToken from '../../../Hooks/getToken/getToken';
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
-
-    const navigate = useNavigate()
-
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const navigate = useNavigate();
+
+
     // console.log(errors)
 
     const handleRegister = (data) => {
@@ -35,8 +36,9 @@ const Register = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                reset();
+                                getToken(email)
                                 navigate('/')
+                                reset();
                             })
 
                     }).catch(err => console.error(err))

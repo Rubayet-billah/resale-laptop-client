@@ -14,7 +14,7 @@ const MyBookings = () => {
         queryFn: async () => {
             const res = await fetch(url, {
                 headers: {
-                    // authorization: `Bearer ${localStorage.getItem('doctorsToken')}`
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             });
             const data = await res.json();

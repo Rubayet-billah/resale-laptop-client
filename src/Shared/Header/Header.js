@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useRole from '../../Hooks/useRole/useRole';
-import Spinner from '../Spinner/Spinner';
 
 const Header = () => {
     const { user, logoutUser } = useContext(AuthContext);
     const [role, roleLoader] = useRole(user?.email);
 
-    // console.log(user)
+    console.log('form header ', role, roleLoader)
 
     const handleLogout = () => {
         logoutUser()
@@ -36,9 +35,9 @@ const Header = () => {
                 <li><Link to='/register'>Register</Link></li></>
         }
     </>
-    // if (roleLoader) {
-    //     return
-    // }
+    if (roleLoader) {
+        return <></>
+    }
     return (
         <div>
             <div className="navbar bg-base-100">

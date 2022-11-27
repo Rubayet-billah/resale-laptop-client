@@ -9,7 +9,11 @@ const MyProducts = () => {
     const [call, setCall] = useState(false)
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/myproducts/?email=${user?.email}`)
+        axios.get(`http://localhost:5000/myproducts/?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(data => {
                 setMyproducts(data.data)
             })
