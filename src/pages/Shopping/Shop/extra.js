@@ -107,7 +107,7 @@ const Extra = () => {
         },
     ]
 
-    console.log(JSON.stringify(product))
+    // console.log(JSON.stringify())
 
 
     return (

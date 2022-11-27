@@ -18,6 +18,7 @@ const Header = () => {
 
     const menu = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ? <>
                 {role === 'Customer' && <li><Link to='/myorders'>My Orders</Link></li>}
