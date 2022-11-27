@@ -13,7 +13,7 @@ const AdvertisedProducts = () => {
     })
 
     return (
-        <div>
+        <div className='my-5'>
             {advertisedProducts.length > 0 && <h2 className='text-4xl text-center my-6'>Advertised Product</h2>}
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {

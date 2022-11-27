@@ -5,7 +5,7 @@ const AdvertisedProduct = ({ product }) => {
     const { image, name, resalePrice, originalPrice, usingTime, location, seller, description, condition } = product;
     return (
         <div>
-            <div className="card  bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl">
                 <figure><img src={image} alt="" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
