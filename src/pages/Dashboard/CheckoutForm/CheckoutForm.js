@@ -1,18 +1,18 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ booking }) => {
-    const { buyer, email, price } = booking;
-    const [cardError, setCardError] = useState('')
-    const [cardSuccess, setCardSuccess] = useState('')
-    const [transectionId, setTransectionId] = useState('')
-    const [processing, setProcessing] = useState(false)
-    const [clientSecret, setClientSecret] = useState('')
+    const { buyer, email, price, _id } = booking;
+    const [cardError, setCardError] = useState('');
+    const [cardSuccess, setCardSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
+    const [clientSecret, setClientSecret] = useState('');
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        setProcessing(true)
         fetch(`http://localhost:5000/create-payment-intent`, {
             method: 'POST',
             headers: {
@@ -27,6 +27,7 @@ const CheckoutForm = ({ booking }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setProcessing(true)
         if (!stripe || !elements) {
             return;
         }
@@ -44,9 +45,11 @@ const CheckoutForm = ({ booking }) => {
 
         if (error) {
             setCardError(error.message);
+            setProcessing(false)
         } else {
             setCardError('');
         }
+
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -66,8 +69,26 @@ const CheckoutForm = ({ booking }) => {
         }
         if (paymentIntent.status === "succeeded") {
             console.log('payment intend', paymentIntent)
-            setTransectionId(paymentIntent.id)
             setCardSuccess('Congratulation! Your payment is successfully done.')
+            const payment = {
+                price,
+                email,
+                bookingId: _id,
+                transectionId: paymentIntent.id
+            }
+            fetch('http://localhost:5000/payments', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payment)
+            }).then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.acknowledged) {
+                        navigate('/myorders')
+                    }
+                })
         } else {
             setCardSuccess('');
         }
@@ -93,7 +114,7 @@ const CheckoutForm = ({ booking }) => {
                     }}
                 />
 
-                <button type="submit" disabled={!stripe} className='btn btn-primary btn-sm mt-6'>
+                <button type="submit" disabled={!stripe || !clientSecret || processing} className='btn btn-primary btn-sm mt-6'>
                     Pay
                 </button>
             </form>
