@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FaGooglePlusSquare } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import getToken from '../../../Hooks/getToken/getToken';
 
 const Login = () => {
     const { loginUser, googleLogin } = useContext(AuthContext);
@@ -12,6 +13,8 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 const user = result.user;
+                getToken(user.email)
+                window.location.reload()
             })
             .catch(err => console.error(err))
     }
@@ -20,7 +23,7 @@ const Login = () => {
         googleLogin()
             .then(res => {
                 const user = res.user;
-                console.log(user)
+                getToken(user.email)
             }).catch(err => console.error(err))
     }
     return (

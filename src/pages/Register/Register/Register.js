@@ -39,6 +39,7 @@ const Register = () => {
                                 getToken(email)
                                 navigate('/')
                                 reset();
+                                window.location.reload();
                             })
 
                     }).catch(err => console.error(err))

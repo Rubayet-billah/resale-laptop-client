@@ -11,6 +11,7 @@ import MyProducts from "../../pages/Dashboard/Seller/MyProducts/MyProducts";
 import Login from "../../pages/Register/Login/Login";
 import Register from "../../pages/Register/Register/Register";
 import Shop from "../../pages/Shopping/Shop/Shop";
+import CustomerRoute from "../CustomerRoute/CustomerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 const { createBrowserRouter } = require("react-router-dom");
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myorders',
-                element: <MyBookings></MyBookings>
+                element: <CustomerRoute><MyBookings></MyBookings></CustomerRoute>
             },
             {
                 path: '/addproduct',

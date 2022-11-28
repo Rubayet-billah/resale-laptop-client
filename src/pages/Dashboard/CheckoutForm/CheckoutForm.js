@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ booking }) => {
-    const { buyer, email, price, _id } = booking;
+    const { buyer, email, price, _id, productId } = booking;
     const [cardError, setCardError] = useState('');
     const [cardSuccess, setCardSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
@@ -74,6 +74,7 @@ const CheckoutForm = ({ booking }) => {
                 price,
                 email,
                 bookingId: _id,
+                productId,
                 transectionId: paymentIntent.id
             }
             fetch('http://localhost:5000/payments', {

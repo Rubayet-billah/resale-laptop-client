@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const BookingModal = ({ bookedProduct, setBookedProduct }) => {
-    const { image, name, resalePrice, originalPrice, usingTime, location, seller, description, condition } = bookedProduct;
+    const { image, name, resalePrice, originalPrice, usingTime, location, seller, description, condition, _id } = bookedProduct;
     const { user } = useContext(AuthContext);
 
     const handleBooking = (event) => {
@@ -17,6 +17,7 @@ const BookingModal = ({ bookedProduct, setBookedProduct }) => {
             buyer: user.displayName,
             email: user.email,
             productName: name,
+            productId: _id,
             image,
             price: resalePrice,
             phone,
