@@ -1,15 +1,33 @@
 import React, { useState } from 'react';
 import { GoVerified } from 'react-icons/go'
+import { toast } from 'react-toastify';
 import useVerify from '../../../Hooks/useVerify/useVerify';
 
 const Product = ({ product, setBookedProduct }) => {
     const [toggle, setToggle] = useState(true)
-    const { image, name, resalePrice, originalPrice, usingTime, location, seller, email, description, condition } = product;
+    const { _id, image, name, resalePrice, originalPrice, usingTime, location, seller, email, description, condition } = product;
 
     const [verified, verifiedLoader] = useVerify(email);
     console.log(verified)
     if (verifiedLoader) {
         return
+    }
+    const handleReport = (id) => {
+        const confirmation = window.confirm(`Are you sure to report ${name}`);
+        if (confirmation) {
+            fetch(`http://localhost:5000/products/reported/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ reported: true })
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount) {
+                        toast.success('Reported Successfully')
+                    }
+                })
+        }
     }
     return (
         <div className="card  bg-base-100 shadow-xl">
@@ -34,10 +52,10 @@ const Product = ({ product, setBookedProduct }) => {
 
 
                 <div className="card-actions justify-end">
-                    {/* <button className='btn w-full btn-primary'>Book Now</button> */}
                     <label htmlFor="booking-modal"
                         onClick={() => setBookedProduct(product)}
-                        className='btn w-full btn-primary'>Book Now</label>
+                        className='btn btn-sm btn-primary'>Book Now</label>
+                    <button onClick={() => handleReport(_id)} className='btn btn-sm btn-primary btn-outline'>Report</button>
                 </div>
             </div>
         </div>

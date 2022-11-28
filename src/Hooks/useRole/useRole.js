@@ -12,6 +12,7 @@ const useRole = (email) => {
                     setRoleLoader(false)
                 })
         }
+        setRoleLoader(false)
     }, [email])
     return [role, roleLoader];
 }

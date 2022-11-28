@@ -6,7 +6,6 @@ import useRole from '../../Hooks/useRole/useRole';
 const Header = () => {
     const { user, logoutUser } = useContext(AuthContext);
     const [role, roleLoader] = useRole(user?.email);
-
     console.log('form header ', role, roleLoader)
 
     const handleLogout = () => {
