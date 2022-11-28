@@ -3,10 +3,12 @@ import { FaGooglePlusSquare } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import getToken from '../../../Hooks/getToken/getToken';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { loginUser, googleLogin } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate()
 
     const handleLogin = (data) => {
         const { email, password } = data;
@@ -15,6 +17,7 @@ const Login = () => {
                 const user = result.user;
                 getToken(user.email)
                 window.location.reload()
+                navigate('/')
             })
             .catch(err => console.error(err))
     }
@@ -24,6 +27,7 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 getToken(user.email)
+                navigate('/')
             }).catch(err => console.error(err))
     }
     return (
