@@ -7,6 +7,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [myProducts, setMyproducts] = useState([]);
     const [call, setCall] = useState(false)
+    console.log(myProducts)
 
     useEffect(() => {
         axios.get(`http://localhost:5000/myproducts/?email=${user?.email}`, {
@@ -74,7 +75,7 @@ const MyProducts = () => {
                                     </div>
                                 </div></th>
                                 <td>{product.name}</td>
-                                <td>{!product.status ? <span className='text-success'>Available</span> : <span className='text-warning'>Sold</span>}</td>
+                                <td>{!product.status ? <span className='text-success'>Available</span> : <span className='text-warning'>{product.status}</span>}</td>
                                 <td>
                                     {
                                         !product.advertised ?
