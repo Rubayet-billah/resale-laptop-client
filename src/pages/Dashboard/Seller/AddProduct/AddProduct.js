@@ -11,7 +11,7 @@ const AddProduct = () => {
 
     const handleAddProduct = (data) => {
         // console.log(data)
-        const { name, image, category, resalePrice, originalPrice, location, phone, purchaseYear, condition, description } = data;
+        const { name, image, category, resalePrice, originalPrice, location, phone, purchaseYear, usingTime, condition, description } = data;
         const date = format(new Date(), 'PP');
         const product = {
             name,
@@ -21,7 +21,8 @@ const AddProduct = () => {
             originalPrice,
             location,
             phone,
-            usingTime: purchaseYear,
+            usingTime,
+            purchaseYear,
             condition,
             description,
             date,
@@ -102,7 +103,11 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Year of Purchase</span>
                         </label>
-                        <input className='input input-bordered w-full' type='text' placeholder='Year' {...register("purchaseYear", { required: true })} />
+                        <input className='input input-bordered w-full' type='text' placeholder='Purchase Year' {...register("purchaseYear", { required: true })} />
+                        <label className="label">
+                            <span className="label-text">Year Used</span>
+                        </label>
+                        <input className='input input-bordered w-full' type='text' placeholder='Year Used' {...register("usingTime", { required: true })} />
 
                         <label className="label">
                             <span className="label-text">Description</span>
