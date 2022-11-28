@@ -2,6 +2,7 @@ import DashboardLayout from "../../Layout/DashboardLayout/DashboardLayout";
 import Blog from "../../pages/Blog/Blog";
 import AllCustomers from "../../pages/Dashboard/Admin/AllCustomers/AllCustomers";
 import AllSellers from "../../pages/Dashboard/Admin/AllSellers/AllSellers";
+import ReportedItems from "../../pages/Dashboard/Admin/ReportedItems/ReportedItems";
 import MyBookings from "../../pages/Dashboard/Customer/MyBookings/MyBookings";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import Payment from "../../pages/Dashboard/Payment/Payment";
@@ -81,6 +82,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allcustomers',
                 element: <AllCustomers></AllCustomers>
+            },
+            {
+                path: '/dashboard/reportedproducts',
+                element: <ReportedItems></ReportedItems>,
+                loader: () => fetch('http://localhost:5000/reportedproducts')
             },
         ]
     }

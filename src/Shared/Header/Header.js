@@ -28,6 +28,7 @@ const Header = () => {
                 {role === 'Admin' && <>
                     <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
                     <li><Link to='/dashboard/allcustomers'>All Customers</Link></li>
+                    <li><Link to='/dashboard/reportedproducts'>Reported Products</Link></li>
                 </>}
             </> : <>
                 <li><Link to='/login'>Login</Link></li>
