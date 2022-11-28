@@ -4,7 +4,7 @@ import flashSale from '../../../assets/flashSale.webp'
 const FlashSale = () => {
     return (
         <div>
-            <div className="hero bg-base-200 md:mt-12">
+            <div className="hero bg-base-200 md:mt-12 lg:py-24">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={flashSale} className="w-full md:max-w-sm rounded-lg shadow-2xl" alt='' />
                     <div className='lg:ml-12'>
