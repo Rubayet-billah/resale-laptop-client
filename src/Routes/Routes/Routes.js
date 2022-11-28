@@ -85,8 +85,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/reportedproducts',
-                element: <ReportedItems></ReportedItems>,
-                loader: () => fetch('http://localhost:5000/reportedproducts')
+                element: <ReportedItems></ReportedItems>
             },
         ]
     }

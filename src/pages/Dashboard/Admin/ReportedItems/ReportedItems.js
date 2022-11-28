@@ -35,7 +35,6 @@ const ReportedItems = () => {
                             <th>Seller</th>
                             <th>Seller Email</th>
                             <th>Action</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

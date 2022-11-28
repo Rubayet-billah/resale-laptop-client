@@ -7,9 +7,11 @@ import Footer from '../../Shared/Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div className='container mx-auto'>
+        <div>
             <Header></Header>
-            <Outlet></Outlet>
+            <section className='min-h-[90vh] mt-12 container mx-auto'>
+                <Outlet></Outlet>
+            </section>
             <Footer></Footer>
             <ToastContainer
                 position="top-center"
