@@ -3,12 +3,15 @@ import { FaGooglePlusSquare } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import getToken from '../../../Hooks/getToken/getToken';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { loginUser, googleLogin } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = (data) => {
         const { email, password } = data;
@@ -16,8 +19,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 getToken(user.email)
+                // navigate('/')
+                navigate(from, { replace: true })
                 window.location.reload()
-                navigate('/')
             })
             .catch(err => console.error(err))
     }
@@ -25,9 +29,31 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
-                const user = res.user;
-                getToken(user.email)
-                navigate('/')
+                // const user = res.user;
+
+                const { displayName, email, uid } = res.user;
+                const user = {
+                    name: displayName,
+                    email,
+                    role: "Customer",
+                    userId: uid
+                }
+
+
+                fetch('https://assignment-12-server-rubayet-billah.vercel.app/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                    })
+                getToken(email)
+                navigate(from, { replace: true })
+                // navigate('/')
+                window.location.reload();
             }).catch(err => console.error(err))
     }
     return (

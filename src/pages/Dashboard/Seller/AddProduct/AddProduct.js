@@ -26,11 +26,12 @@ const AddProduct = () => {
             condition,
             description,
             date,
+            status: 'Available',
             seller: user?.displayName,
             email: user?.email
         }
 
-        fetch('https://assignment-12-server-eta.vercel.app/products', {
+        fetch('https://assignment-12-server-rubayet-billah.vercel.app/products', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

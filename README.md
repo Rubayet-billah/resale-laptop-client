@@ -4,6 +4,11 @@
 
 Project Name [Resale Laptop](https://my-assignment-12-e6b37.web.app/).
 
+## Admin Information
+
+adminEmail: <useradmin@gmail.com>
+adminPassword: <ab@123456>
+
 ## Description and Tools
 
 ### Features

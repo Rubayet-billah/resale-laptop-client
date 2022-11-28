@@ -15,7 +15,7 @@ const Product = ({ product, setBookedProduct }) => {
     const handleReport = (id) => {
         const confirmation = window.confirm(`Are you sure to report ${name}`);
         if (confirmation) {
-            fetch(`https://assignment-12-server-eta.vercel.app/reportedproducts/${id}`, {
+            fetch(`https://assignment-12-server-rubayet-billah.vercel.app/reportedproducts/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'
@@ -38,7 +38,7 @@ const Product = ({ product, setBookedProduct }) => {
                     <p className='text-xl'>Resale Price: <span className='text-primary font-bold'>${resalePrice}</span></p>
                     <p className='text-xl'>Original Price: <span className='text-primary font-bold'>${originalPrice}</span></p>
                     <p>Condition: {condition}</p>
-                    <p>Used: since {usingTime}</p>
+                    <p>Used: {usingTime} year</p>
                     <p> <span className='flex items-center'>Seller: {seller} {verified && <GoVerified className='text-info ml-1' />}</span></p>
                     <p>Location: {location}</p>
                 </div>

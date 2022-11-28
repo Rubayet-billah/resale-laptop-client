@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import getToken from '../../../Hooks/getToken/getToken';
+import storeUser from '../../../Hooks/storeUser/storeUser';
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
@@ -27,7 +28,14 @@ const Register = () => {
                             role: category,
                             userId: uid
                         }
-                        fetch('https://assignment-12-server-eta.vercel.app/users', {
+                        // storeUser(user)
+                        // getToken(email)
+                        // navigate('/')
+                        // reset();
+                        // window.location.reload();
+
+
+                        fetch('https://assignment-12-server-rubayet-billah.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

@@ -10,7 +10,7 @@ const MyProducts = () => {
     console.log(myProducts)
 
     useEffect(() => {
-        axios.get(`https://assignment-12-server-eta.vercel.app/myproducts/?email=${user?.email}`, {
+        axios.get(`https://assignment-12-server-rubayet-billah.vercel.app/myproducts/?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -22,7 +22,7 @@ const MyProducts = () => {
 
     // handle advertise product
     const handleAdvertise = (product) => {
-        fetch(`https://assignment-12-server-eta.vercel.app/products/${product._id}`, {
+        fetch(`https://assignment-12-server-rubayet-billah.vercel.app/products/${product._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +39,7 @@ const MyProducts = () => {
 
     // handle delete product
     const handleDelete = (id) => {
-        fetch(`https://assignment-12-server-eta.vercel.app/products/${id}`, {
+        fetch(`https://assignment-12-server-rubayet-billah.vercel.app/products/${id}`, {
             method: 'DELETE'
         }).then(res => res.json())
             .then(result => {
