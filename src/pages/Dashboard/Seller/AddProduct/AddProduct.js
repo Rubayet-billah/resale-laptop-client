@@ -62,9 +62,9 @@ const AddProduct = () => {
                             <span className="label-text">Category</span>
                         </label>
                         <select className="select select-bordered w-full" {...register("category", { required: true })} >
-                            <option value='01'>Budget Laptop</option>
-                            <option value='02'>Mid Range Laptop</option>
-                            <option value='03'>High Specification</option>
+                            <option value='01'>Basic Laptop</option>
+                            <option value='02'>Budget Laptop</option>
+                            <option value='03'>Gaming Laptop</option>
                         </select>
 
                         <label className="label">
