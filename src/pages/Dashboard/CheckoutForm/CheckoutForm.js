@@ -13,7 +13,7 @@ const CheckoutForm = ({ booking }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://assignment-12-server-eta.vercel.app/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -77,7 +77,7 @@ const CheckoutForm = ({ booking }) => {
                 productId,
                 transectionId: paymentIntent.id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://assignment-12-server-eta.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

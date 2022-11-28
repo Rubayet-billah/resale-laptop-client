@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path: '/products/:id',
                 element: <PrivateRoute><Shop></Shop></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-12-server-eta.vercel.app/products/${params.id}`)
             },
             {
                 path: '/myorders',
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-12-server-eta.vercel.app/bookings/${params.id}`)
             },
             {
                 path: '/dashboard/allsellers',
