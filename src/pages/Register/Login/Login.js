@@ -6,7 +6,7 @@ import getToken from '../../../Hooks/getToken/getToken';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const { loginUser, googleLogin } = useContext(AuthContext);
+    const { setRoleState, loginUser, googleLogin } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const navigate = useNavigate()
@@ -50,10 +50,11 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+                        console.log('get token login 54', email)
+                        getToken(email)
+                        setRoleState(false)
+                        navigate(from, { replace: true })
                     })
-                // console.log('get token login 54', email)
-                getToken(email)
-                navigate(from, { replace: true })
                 // navigate('/')
                 // window.location.reload();
             }).catch(err => console.error(err))

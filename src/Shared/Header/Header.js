@@ -4,8 +4,9 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useRole from '../../Hooks/useRole/useRole';
 
 const Header = () => {
-    const { user, logoutUser } = useContext(AuthContext);
-    const [role, roleLoader] = useRole(user?.email);
+    const { user, roleState, logoutUser } = useContext(AuthContext);
+    const [role, roleLoader] = useRole(user?.email, roleState);
+    console.log(roleState, 'header line 9')
     const navigate = useNavigate();
 
     const handleLogout = () => {

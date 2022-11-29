@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import getToken from '../../../Hooks/getToken/getToken';
-import storeUser from '../../../Hooks/storeUser/storeUser';
 
 const Register = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { setRoleState, createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const navigate = useNavigate();
 
@@ -45,6 +44,7 @@ const Register = () => {
                             .then(res => res.json())
                             .then(data => {
                                 getToken(email)
+                                setRoleState(false)
                                 navigate('/')
                                 reset();
                                 // window.location.reload();
