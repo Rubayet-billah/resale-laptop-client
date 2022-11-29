@@ -20,6 +20,7 @@ const Login = () => {
                 const user = result.user;
                 console.log('form user', user.email)
                 getToken(user.email)
+                setRoleState(false)
                 // navigate('/')
                 navigate(from, { replace: true })
                 // window.location.reload()

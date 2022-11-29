@@ -4,10 +4,10 @@ const useRole = (email, roleState) => {
     const [role, setRole] = useState('');
     const [roleLoader, setRoleLoader] = useState(true);
     useEffect(() => {
-        if (roleState) {
-            setRoleLoader(false)
-            return
-        }
+        // if (roleState) {
+        //     setRoleLoader(false)
+        //     return
+        // }
         if (email) {
             fetch(`https://assignment-12-server-eta.vercel.app/users/role/${email}`)
                 .then(res => res.json())

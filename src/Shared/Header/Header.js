@@ -17,9 +17,9 @@ const Header = () => {
             .catch(err => console.error(err))
     }
 
-    if (roleLoader) {
-        return <></>
-    }
+    // if (roleLoader) {
+    //     return <></>
+    // }
 
     const menu = <>
         <li><Link to='/'>Home</Link></li>
