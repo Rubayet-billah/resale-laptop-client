@@ -51,10 +51,11 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                     })
+                // console.log('get token login 54', email)
                 getToken(email)
                 navigate(from, { replace: true })
                 // navigate('/')
-                window.location.reload();
+                // window.location.reload();
             }).catch(err => console.error(err))
     }
     return (

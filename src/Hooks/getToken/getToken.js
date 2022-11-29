@@ -1,6 +1,6 @@
 const getToken = email => {
-    console.log('form get token', email)
-    fetch(`https://assignment-12-server-eta.vercel.app/jwt/?email=${email}`)
+    // console.log('form get token', email)
+    fetch(`https://assignment-12-server-eta.vercel.app/jwt?email=${email}`)
         .then(res => res.json())
         .then(data => {
             if (data.accessToken) {
