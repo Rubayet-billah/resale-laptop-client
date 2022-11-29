@@ -7,14 +7,14 @@ const ReportedItems = () => {
     const { data: reportedProducts = [], refetch } = useQuery({
         queryKey: ['reportedproducts'],
         queryFn: async () => {
-            const res = await fetch(`https://assignment-12-server-rubayet-billah.vercel.app/reportedproducts`)
+            const res = await fetch(`https://assignment-12-server-eta.vercel.app/reportedproducts`)
             const data = await res.json();
             return data
         }
     })
 
     const handleDeleteEvent = (product) => {
-        fetch(`https://assignment-12-server-rubayet-billah.vercel.app/reportedproducts/${product._id}`, {
+        fetch(`https://assignment-12-server-eta.vercel.app/reportedproducts/${product._id}`, {
             method: 'DELETE'
         }).then(res => res.json())
             .then(data => {

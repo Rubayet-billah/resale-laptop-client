@@ -1,13 +1,14 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, reset } = useForm()
-
+    const navigate = useNavigate()
 
     const handleAddProduct = (data) => {
         // console.log(data)
@@ -31,7 +32,7 @@ const AddProduct = () => {
             email: user?.email
         }
 
-        fetch('https://assignment-12-server-rubayet-billah.vercel.app/products', {
+        fetch('https://assignment-12-server-eta.vercel.app/products', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -40,7 +41,8 @@ const AddProduct = () => {
         }).then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast.success('Product Added Successfully')
+                    toast.success('Product Added Successfully');
+                    navigate('/myproducts')
                 }
             })
     }

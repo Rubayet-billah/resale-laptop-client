@@ -24,7 +24,7 @@ const BookingModal = ({ bookedProduct, setBookedProduct }) => {
             meetingLocation,
         }
         // store booking on database
-        fetch('https://assignment-12-server-rubayet-billah.vercel.app/bookings', {
+        fetch('https://assignment-12-server-eta.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

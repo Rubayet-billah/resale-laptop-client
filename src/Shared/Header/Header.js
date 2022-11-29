@@ -1,17 +1,23 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useRole from '../../Hooks/useRole/useRole';
 
 const Header = () => {
     const { user, logoutUser } = useContext(AuthContext);
     const [role, roleLoader] = useRole(user?.email);
-    console.log('form header ', role, roleLoader)
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         logoutUser()
-            .then(() => { })
+            .then(() => {
+                navigate('/login')
+            })
             .catch(err => console.error(err))
+    }
+
+    if (roleLoader) {
+        return <></>
     }
 
     const menu = <>
@@ -35,9 +41,7 @@ const Header = () => {
                 <li><Link to='/register'>Register</Link></li></>
         }
     </>
-    if (roleLoader) {
-        return <></>
-    }
+
     return (
         <div>
             <div className="navbar bg-base-200 md:px-12">

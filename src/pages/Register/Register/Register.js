@@ -35,7 +35,7 @@ const Register = () => {
                         // window.location.reload();
 
 
-                        fetch('https://assignment-12-server-rubayet-billah.vercel.app/users', {
+                        fetch('https://assignment-12-server-eta.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -47,7 +47,7 @@ const Register = () => {
                                 getToken(email)
                                 navigate('/')
                                 reset();
-                                window.location.reload();
+                                // window.location.reload();
                             })
 
                     }).catch(err => console.error(err))

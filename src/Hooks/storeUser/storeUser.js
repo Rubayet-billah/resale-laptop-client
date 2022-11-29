@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 const storeUser = (user) => {
     if (user) {
-        fetch('https://assignment-12-server-rubayet-billah.vercel.app/users', {
+        fetch('https://assignment-12-server-eta.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

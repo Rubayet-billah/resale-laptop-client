@@ -15,7 +15,7 @@ const Product = ({ product, setBookedProduct }) => {
     const handleReport = (id) => {
         const confirmation = window.confirm(`Are you sure to report ${name}`);
         if (confirmation) {
-            fetch(`https://assignment-12-server-rubayet-billah.vercel.app/reportedproducts/${id}`, {
+            fetch(`https://assignment-12-server-eta.vercel.app/reportedproducts/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

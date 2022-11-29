@@ -18,10 +18,11 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 const user = result.user;
+                console.log('form user', user.email)
                 getToken(user.email)
                 // navigate('/')
                 navigate(from, { replace: true })
-                window.location.reload()
+                // window.location.reload()
             })
             .catch(err => console.error(err))
     }
@@ -40,7 +41,7 @@ const Login = () => {
                 }
 
 
-                fetch('https://assignment-12-server-rubayet-billah.vercel.app/users', {
+                fetch('https://assignment-12-server-eta.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

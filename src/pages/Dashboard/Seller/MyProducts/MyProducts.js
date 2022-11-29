@@ -10,7 +10,7 @@ const MyProducts = () => {
     console.log(myProducts)
 
     useEffect(() => {
-        axios.get(`https://assignment-12-server-rubayet-billah.vercel.app/myproducts/?email=${user?.email}`, {
+        axios.get(`https://assignment-12-server-eta.vercel.app/myproducts/?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -22,7 +22,7 @@ const MyProducts = () => {
 
     // handle advertise product
     const handleAdvertise = (product) => {
-        fetch(`https://assignment-12-server-rubayet-billah.vercel.app/products/${product._id}`, {
+        fetch(`https://assignment-12-server-eta.vercel.app/products/${product._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -38,21 +38,24 @@ const MyProducts = () => {
     }
 
     // handle delete product
-    const handleDelete = (id) => {
-        fetch(`https://assignment-12-server-rubayet-billah.vercel.app/products/${id}`, {
-            method: 'DELETE'
-        }).then(res => res.json())
-            .then(result => {
-                if (result.deletedCount > 0) {
-                    toast.success('Product Deleted Successfully');
-                    setCall(!call)
-                }
-            })
+    const handleDelete = (product) => {
+        const confirmation = window.confirm(`Are you sure you want to delete ${product.name}`)
+        if (confirmation) {
+            fetch(`https://assignment-12-server-eta.vercel.app/products/${product._id}`, {
+                method: 'DELETE'
+            }).then(res => res.json())
+                .then(result => {
+                    if (result.deletedCount > 0) {
+                        toast.success('Product Deleted Successfully');
+                        setCall(!call)
+                    }
+                })
+        }
     }
 
     return (
         <div>
-            <h3 className='text-3xl mb-5'>My Products {myProducts?.length}</h3>
+            <h3 className='text-3xl text-center mb-5'>My Products</h3>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -75,20 +78,22 @@ const MyProducts = () => {
                                     </div>
                                 </div></th>
                                 <td>{product.name}</td>
-                                <td>{!product.status ? <span className='text-success'>Available</span> : <span className='text-warning'>{product.status}</span>}</td>
+                                <td>{!product.status ? <span className='text-success'>Available</span> : <span className='text-warning font-bold'>{product.status}</span>}</td>
                                 <td>
                                     {
                                         !product.advertised ?
-                                            <button onClick={() => handleAdvertise(product)} className='btn btn-sm btn-outline'>
+
+
+                                            <>{product.status !== 'Sold' && <button onClick={() => handleAdvertise(product)} className='btn btn-sm btn-outline'>
                                                 Avdvertise
-                                            </button> : <span className='font-bold text-success'>Advertised</span>
-                                    }
-                                    {
-                                        // booking.price && booking.paid && <span className='text-success'>Paid</span>
+                                            </button>}</>
+
+
+                                            : <span className='font-bold text-success'>Advertised</span>
                                     }
                                 </td>
                                 <td className='font-bold text-primary'>${product.resalePrice}</td>
-                                <td><button onClick={() => handleDelete(product._id)} className='btn btn-sm btn-outline btn-error'>Delete</button></td>
+                                <td><button onClick={() => handleDelete(product)} className='btn btn-sm btn-outline btn-error'>Delete</button></td>
                             </tr>)
                         }
 

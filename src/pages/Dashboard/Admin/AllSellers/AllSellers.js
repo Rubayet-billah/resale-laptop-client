@@ -12,7 +12,7 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['/users'],
         queryFn: async () => {
-            const res = await fetch(`https://assignment-12-server-rubayet-billah.vercel.app/users/?role=Seller`);
+            const res = await fetch(`https://assignment-12-server-eta.vercel.app/users/?role=Seller`);
             const data = await res.json();
             return data;
         }
@@ -21,7 +21,7 @@ const AllSellers = () => {
         handleDelete(seller, refetch);
     }
     const handleVerifyEvent = (seller) => {
-        fetch(`https://assignment-12-server-rubayet-billah.vercel.app/users/${seller._id}`, {
+        fetch(`https://assignment-12-server-eta.vercel.app/users/${seller._id}`, {
             method: 'PATCH',
         }).then(res => res.json())
             .then(result => {

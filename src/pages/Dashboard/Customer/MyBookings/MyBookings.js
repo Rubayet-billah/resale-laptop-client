@@ -7,7 +7,7 @@ const MyBookings = () => {
     // const myBookings = useLoaderData();
     const { user } = useContext(AuthContext);
 
-    const url = `https://assignment-12-server-rubayet-billah.vercel.app/bookings/?email=${user?.email}`;
+    const url = `https://assignment-12-server-eta.vercel.app/bookings/?email=${user?.email}`;
 
     const { data: myBookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -24,7 +24,7 @@ const MyBookings = () => {
 
     return (
         <div>
-            <h3 className='text-3xl mb-5'>My Bookings {myBookings.length}</h3>
+            <h3 className='text-3xl text-center mb-5'>My Bookings</h3>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
