@@ -7,44 +7,61 @@ import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
-    const { register, handleSubmit, reset } = useForm()
+    const { register, handleSubmit } = useForm()
+    const imgHostKey = process.env.REACT_APP_imgbb_apikey;
     const navigate = useNavigate()
 
     const handleAddProduct = (data) => {
         // console.log(data)
-        const { name, image, category, resalePrice, originalPrice, location, phone, purchaseYear, usingTime, condition, description } = data;
-        const date = format(new Date(), 'PP');
-        const product = {
-            name,
-            image,
-            categoryId: category,
-            resalePrice,
-            originalPrice,
-            location,
-            phone,
-            usingTime,
-            purchaseYear,
-            condition,
-            description,
-            date,
-            status: 'Available',
-            seller: user?.displayName,
-            email: user?.email
-        }
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image)
 
-        fetch('https://assignment-12-server-eta.vercel.app/products', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(product)
-        }).then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success('Product Added Successfully');
-                    navigate('/myproducts')
+        const { name, category, resalePrice, originalPrice, location, phone, purchaseYear, usingTime, condition, description } = data;
+        const date = format(new Date(), 'PP');
+
+        fetch(`https://api.imgbb.com/1/upload?key=${imgHostKey}`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    const product = {
+                        name,
+                        image: imgData.data.url,
+                        categoryId: category,
+                        resalePrice,
+                        originalPrice,
+                        location,
+                        phone,
+                        usingTime,
+                        purchaseYear,
+                        condition,
+                        description,
+                        date,
+                        status: 'Available',
+                        seller: user?.displayName,
+                        email: user?.email
+                    }
+
+                    fetch('https://assignment-12-server-eta.vercel.app/products', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(product)
+                    }).then(res => res.json())
+                        .then(data => {
+                            if (data.acknowledged) {
+                                toast.success('Product Added Successfully');
+                                navigate('/myproducts')
+                            }
+                        })
                 }
             })
+
+
     }
     return (
         <div>
@@ -81,7 +98,7 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Image</span>
                         </label>
-                        <input className='input input-bordered w-full' type='text' placeholder='Image URL' {...register("image", { required: true })} />
+                        <input className="file-input file-input-bordered w-full" type="file" placeholder="Image URL" {...register("image", { required: true })} />
 
                         <label className="label">
                             <span className="label-text">Resale Price</span>

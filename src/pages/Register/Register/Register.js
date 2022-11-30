@@ -5,7 +5,7 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import getToken from '../../../Hooks/getToken/getToken';
 
 const Register = () => {
-    const { setRoleState, createUser, updateUser } = useContext(AuthContext);
+    const { setRoleState, setLoading, createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const navigate = useNavigate();
 
@@ -44,6 +44,7 @@ const Register = () => {
                             .then(res => res.json())
                             .then(data => {
                                 getToken(email)
+                                setLoading(false)
                                 setRoleState(false)
                                 navigate('/')
                                 reset();
