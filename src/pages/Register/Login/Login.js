@@ -3,7 +3,7 @@ import { FaGooglePlusSquare } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import getToken from '../../../Hooks/getToken/getToken';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { setRoleState, loginUser, googleLogin } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log('form user', user.email)
+                // console.log('form user', user.email)
                 getToken(user.email)
                 setRoleState(false)
                 // navigate('/')
@@ -51,7 +51,7 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log('get token login 54', email)
+                        // console.log('get token login 54', email)
                         getToken(email)
                         setRoleState(false)
                         navigate(from, { replace: true })
@@ -81,6 +81,7 @@ const Login = () => {
                             <input className='input input-bordered w-full' type='password' placeholder='Password' {...register("password", { required: true })} />
                             {errors.password && <span className='text-red-500 text-sm italic'>Password is required</span>}
                             <input className='btn btn-primary my-3' type="submit" />
+                            <small className='text-center'>New to this site ? Please <Link to='/register' className='text-primary'>register</Link></small>
                         </form>
                         <hr />
                         <div className='text-center mb-3'>

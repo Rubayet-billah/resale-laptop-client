@@ -68,7 +68,7 @@ const CheckoutForm = ({ booking }) => {
             return;
         }
         if (paymentIntent.status === "succeeded") {
-            console.log('payment intend', paymentIntent)
+            // console.log('payment intend', paymentIntent)
             setCardSuccess('Congratulation! Your payment is successfully done.')
             const payment = {
                 price,
@@ -85,7 +85,7 @@ const CheckoutForm = ({ booking }) => {
                 body: JSON.stringify(payment)
             }).then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     if (data.acknowledged) {
                         navigate('/myorders')
                     }

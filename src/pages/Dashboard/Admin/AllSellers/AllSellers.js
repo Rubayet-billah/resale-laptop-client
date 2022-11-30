@@ -7,7 +7,7 @@ import useVerify from '../../../../Hooks/useVerify/useVerify';
 
 const AllSellers = () => {
     const [verified, verifiedLoader] = useVerify('nadir@gmail.com')
-    console.log(verified)
+    // console.log(verified)
 
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['/users'],

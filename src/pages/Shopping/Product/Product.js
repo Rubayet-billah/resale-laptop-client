@@ -8,7 +8,7 @@ const Product = ({ product, setBookedProduct }) => {
     const { _id, image, name, resalePrice, originalPrice, usingTime, location, seller, email, description, condition } = product;
 
     const [verified, verifiedLoader] = useVerify(email);
-    console.log(verified)
+    // console.log(verified)
     if (verifiedLoader) {
         return
     }

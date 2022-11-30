@@ -7,7 +7,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [myProducts, setMyproducts] = useState([]);
     const [call, setCall] = useState(false)
-    console.log(myProducts)
+    // console.log(myProducts)
 
     useEffect(() => {
         axios.get(`https://assignment-12-server-eta.vercel.app/myproducts/?email=${user?.email}`, {

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import getToken from '../../../Hooks/getToken/getToken';
 
@@ -98,6 +98,7 @@ const Register = () => {
                             {/* errors will return when field validation fails  */}
 
                             <input className='btn btn-primary my-3' type="submit" />
+                            <small className='text-center'>Have an account ? Please <Link to='/login' className='text-primary'>login</Link></small>
                         </form>
                     </div>
                 </div>

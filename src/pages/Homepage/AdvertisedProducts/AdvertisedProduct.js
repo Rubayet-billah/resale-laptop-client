@@ -28,10 +28,12 @@ const AdvertisedProduct = ({ product }) => {
 
                     <div className="card-actions justify-end">
                         {/* <button className='btn w-full btn-primary'>Book Now</button> */}
-                        <label htmlFor="booking-modal"
+                        {/* <label htmlFor="booking-modal"
                             // onClick={() => setBookedProduct(product)}
-                            className='btn w-full btn-primary'>Book Now</label>
+                            className='btn w-full btn-primary'>Book Now</label> */}
                     </div>
+
+
                 </div>
             </div>
         </div>
